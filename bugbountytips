@@ -1,1 +1,75 @@
-khhoho
+Google Dorks for Bug Bounty | Find Sensitive Information 
+
+Discovering Exposed Files:
+
+intitle:"index of" "site:site.com"
+filetype:log inurl:log site:site.com
+filetype:sql inurl:sql site:site.com
+filetype:env inurl:.env site:site.com
+
+
+Finding Sensitive Directories:
+
+inurl:/phpinfo.php site:site.com
+inurl:/admin site:site.com
+inurl:/backup site:site.com
+inurl:wp- site:site.com
+
+Exposed Configuration Files:
+
+filetype:config inurl:config site:site.com
+filetype:ini inurl:wp-config.php site:site.com
+filetype:json inurl:credentials site:site.com
+
+
+Discovering Usernames and Passwords:
+
+intext:"password" filetype:log site:site.com
+intext:"username" filetype:log site:site.com
+filetype:sql "password" site:site.com
+
+
+Finding Database Files:
+
+filetype:sql inurl:db site:site.com
+filetype:sql inurl:dump site:site.com
+filetype:bak inurl:db site:site.com
+
+
+Exposed Git Repositories:
+
+inurl:".git" site:site.com
+inurl:"/.git/config" site:site.com
+intitle:"index of" ".git" site:site.com
+
+
+Finding Publicly Exposed Emails:
+
+intext:"email" site:site.com
+inurl:"contact" intext:"
+
+@site
+.com" -www.site.com
+filetype:xls inurl:"email" site:site.com
+
+
+Discovering Vulnerable Web Servers:
+
+intitle:"Apache2 Ubuntu Default Page: It works" site:site.com
+intitle:"Index of /" "Apache Server" site:site.com
+intitle:"Welcome to nginx" site:site.com
+
+
+Finding API Keys:
+
+filetype:env "DB_PASSWORD" site:site.com
+intext:"api_key" filetype:env site:site.com
+intext:"AWS_ACCESS_KEY_ID" filetype:env site:site.com
+
+
+Exposed Backup Files:
+
+filetype:bak inurl:backup site:site.com
+filetype:bak inurl:backup site:site.com
+filetype:zip inurl:backup site:site.com
+filetype:tgz inurl:backup site:site.com
